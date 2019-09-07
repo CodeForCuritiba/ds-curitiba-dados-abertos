@@ -4,5 +4,5 @@ python:
   - '3.7'
 install:
   - 'pip install --upgrade pip pipenv'
-  - 'pipenv install'
+  - 'pipenv install --system --deploy'
 script: 'python main.py'
