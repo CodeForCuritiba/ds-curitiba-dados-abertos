@@ -10,8 +10,11 @@ flake8 = "*"
 [packages]
 requests = "*"
 rows = "*"
-pandas = "*"
 sqlalchemy = "*"
+pytest = "*"
+coverage = "*"
+pytest-cov = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"
