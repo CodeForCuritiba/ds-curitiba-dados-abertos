@@ -9,6 +9,18 @@ from xml.dom import minidom
 
 
 def download_file(url, folder=None, name_override=None, force_overwrite=False):
+    """ Downloads a file from a website
+
+    params:
+        - url (mandatory)
+        - folder - Destination folder;
+        - name_override - If provided, override the name of file,
+                          if not pick latest part of url
+        - force_overwrite - (bool) - Default False
+    returns:
+        - local_filename - The path of downloaded file
+        - file_encoding
+    """
     local_filename = url.split('/')[-1] if not name_override else name_override
     local_filename = local_filename if not folder \
         else f'{folder}/{local_filename}'
@@ -39,6 +51,12 @@ def download_file(url, folder=None, name_override=None, force_overwrite=False):
 
 
 def get_latest_csv_url_from_156():
+    """This fuction connects to website of dadosabertos, fetches and parses
+    this file, collecting latest CSV.
+
+    returns:
+        - latest_csv_url - The full url of the latest CSV
+    """
     print('Fetching latest base of 156...')
 
     base_url = 'http://dadosabertos.c3sl.ufpr.br/curitiba/156'
@@ -66,7 +84,13 @@ def get_latest_csv_url_from_156():
     return latest_csv_url
 
 
-def get_base156():
+def get_downloaded_base156():
+    """ Downloads the base156.
+
+    returns:
+        - csv_filename - The relative file location, on your filesystem
+        - csv_filename_encoding
+    """
 
     csv_url = get_latest_csv_url_from_156()
     csv_filename, csv_filename_encoding = \
@@ -80,7 +104,7 @@ def get_base156():
 
 
 def main():
-    csv_file, csv_encoding = get_base156()
+    csv_file, csv_encoding = get_downloaded_base156()
 
     print('Loading data from CSV...')
     field_names = ['SOLICITACAO', 'TIPO', 'ORGAO', 'DATA',
