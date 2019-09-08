@@ -2,7 +2,7 @@
 language: python
 
 python:
-  - '3.7'
+  - 3.7
 env:
   global:
     CC_TEST_REPORTER_ID=$CODECLIMATE_REPORTER_ID
@@ -10,23 +10,21 @@ env:
 jobs:
   include:
     - stage: Base linting
-      install: 'pip install flake8'
+      install: pip install flake8
       script: flake8 app.py
 
     - stage: CI - Test Codebase - Quality Gate
       before_script:
-        - >
-          curl -L  https://codeclimate.com/downloads/\
-          test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        - 'chmod +x ./cc-test-reporter'
-        - './cc-test-reporter before-build'
+        -  curl -L  https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+        - ./cc-test-reporter before-build
       install:
-        - 'pip install --upgrade pip pipenv'
-        - 'pipenv install --system --deploy'
+        - pip install --upgrade pip pipenv
+        - pipenv install --system --deploy
       script:
-        - 'pytest --cov=app'
+        - pytest --cov=app
       after_script:
-        - 'coverage xml'
+        - coverage xml
         - >
           if [[ "$TRAVIS_PULL_REQUEST" == "false" ]];
           then ./cc-test-reporter after-build
@@ -35,12 +33,12 @@ jobs:
     - stage: CD - Deploy Database
       if: branch = master
       install:
-        - 'pip install --upgrade pip pipenv'
-        - 'pipenv install --system --deploy'
+        - pip install --upgrade pip pipenv
+        - pipenv install --system --deploy
       script:
-        - 'python app.py'
-        - 'gzip --verbose clean_data/base156.sqlite'
-        - 'pipenv lock -r --dev > requirements.txt'
+        - python app.py
+        - gzip --verbose clean_data/base156.sqlite
+        - pipenv lock -r --dev > requirements.txt
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH
