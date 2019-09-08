@@ -14,6 +14,10 @@ jobs:
       install:
         - 'pip install --upgrade pip pipenv'
         - 'pipenv install --system --deploy'
+      before_script:
+        - 'curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter'
+        - 'chmod +x ./cc-test-reporter'
+        - './cc-test-reporter before-build'
       script:
         - 'python main.py'
         - 'gzip --verbose clean_data/base156.sqlite'
@@ -24,3 +28,4 @@ jobs:
         file_glob: true
         file: clean_data/*
         skip_cleanup: true
+        draft: true
