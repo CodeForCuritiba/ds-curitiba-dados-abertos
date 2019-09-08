@@ -14,13 +14,12 @@ jobs:
       install:
         - 'pip install --upgrade pip pipenv'
         - 'pipenv install --system --deploy'
-      script: 'python main.py'
-    - stage: Compress Database
-      if: branch = master
-      script: 'gzip --verbose clean_data/base156.sqlite'
+      script:
+        - 'python main.py'
+        - 'gzip --verbose clean_data/base156.sqlite'
     - stage: Deploy
       provider: releases
       api_key: $GITHUB_OAUTH
       file_glob: true
-      file: deploy/*
+      file: clean_data/*
       skip_cleanup: true
