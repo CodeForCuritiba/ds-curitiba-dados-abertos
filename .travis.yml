@@ -17,9 +17,10 @@ jobs:
       script:
         - 'python main.py'
         - 'gzip --verbose clean_data/base156.sqlite'
-    - stage: Deploy
-      provider: releases
-      api_key: $GITHUB_OAUTH
-      file_glob: true
-      file: clean_data/*
-      skip_cleanup: true
+        - 'pipenv lock -r --dev > requirements.txt'
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH
+        file_glob: true
+        file: clean_data/*
+        skip_cleanup: true
