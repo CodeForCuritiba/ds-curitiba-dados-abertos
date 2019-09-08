@@ -39,6 +39,7 @@ jobs:
         - python app.py
         - gzip --verbose clean_data/base156.sqlite
         - pipenv lock -r --dev > requirements.txt
+        - git tag $(cat VERSION)
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH
