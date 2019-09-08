@@ -1,8 +1,26 @@
 ---
 language: python
+
 python:
   - '3.7'
-install:
-  - 'pip install --upgrade pip pipenv'
-  - 'pipenv install --system --deploy'
-script: 'python main.py'
+
+jobs:
+  include:
+    - stage: Linting
+      install: 'pip install flake8'
+      script: flake8
+    - stage: Generate Database
+      if: branch = master
+      install:
+        - 'pip install --upgrade pip pipenv'
+        - 'pipenv install --system --deploy'
+      script: 'python main.py'
+    - stage: Compress Database
+      if: branch = master
+      script: 'gzip --verbose clean_data/base156.sqlite'
+    - stage: Deploy
+      provider: releases
+      api_key: $GITHUB_OAUTH
+      file_glob: true
+      file: deploy/*
+      skip_cleanup: true
