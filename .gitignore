@@ -160,3 +160,5 @@ tags
 
 # End of https://www.gitignore.io/api/vim,python,jupyternotebooks
 
+clean_data/*
+source_data/*
