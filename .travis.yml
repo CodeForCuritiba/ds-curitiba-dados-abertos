@@ -45,4 +45,5 @@ jobs:
         file_glob: true
         file: clean_data/*
         skip_cleanup: true
-        draft: true
+        on:
+          tags: true
