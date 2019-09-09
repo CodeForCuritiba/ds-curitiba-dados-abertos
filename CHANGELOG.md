@@ -1,3 +1,7 @@
+#1.1.3
+- Small fixes
+- Update readme file
+
 #1.1.2
 - Update travis in order to build only PRS or master branch
 
