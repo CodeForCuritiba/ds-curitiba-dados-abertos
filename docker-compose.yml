@@ -1,0 +1,12 @@
+---
+version: '3.7'
+services:
+  jupyter-notebook:
+    build:
+      context: .
+    image: recrutatech_devops
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+
