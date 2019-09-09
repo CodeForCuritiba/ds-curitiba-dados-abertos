@@ -1,9 +1,17 @@
 setup:
-	pipenv install --dev
-	pipenv shell
+	@echo "Boostrapping docker container..."
+	docker-compose up -d
 
-test:
-	pytest --cov=app
+pip:
+	docker-compose exec jupyter-notebook pipenv install --system --dev
 
-run:
-	python app.py
+app: setup
+	@echo "Running app.py"
+	docker-compose exec jupyter-notebook python3 app.py
+
+test: setup
+	docker-compose exec jupyter-notebook pytest --cov=app
+
+shell: setup
+	docker-compose exec jupyter-notebook bash
+
