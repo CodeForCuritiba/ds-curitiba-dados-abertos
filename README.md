@@ -1,25 +1,34 @@
-# Recruta Tech - DevOPS and IA
-### Demo project
+# Curitiba - Dados Abertos
+## Arquivo limpo do dadosbertos - Portal curitiba.pr.gov.br
+Esse repositório visa abranger todos os dados do portal da transparência de maneira limpa e pronta para ser utilizada por programas de BI. [](https://www.curitiba.pr.gov.br/dadosabertos/busca/)
+O mesmo gera entregáveis que podem ser acessados facilmente na aba "releases" deste mesmo repositório. Este é um projeto piloto do code for Curitiba que visa utilizar técnicas de CI/CD.
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/2986fab3b5feab31c0c5/maintainability)](https://codeclimate.com/github/joepreludian/recrutatech_devops_ia/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/2986fab3b5feab31c0c5/test_coverage)](https://codeclimate.com/github/joepreludian/recrutatech_devops_ia/test_coverage)
-[![Build Status](https://travis-ci.org/joepreludian/recrutatech_devops_ia.svg?branch=master)](https://travis-ci.org/joepreludian/recrutatech_devops_ia)
+## Como acessar os dados
+Esse projeto foi construído em cima do `docker-composer`. Este permite a criação de um ambiente pronto para funcionamento em todas as plataformas: Windows, Linux e Mac OS;
+O instalador para Windows pode ser encontrado em [](https://docs.docker.com/docker-for-windows/).
 
-This project aims to show a couple of things;
-* How DevOps can leverage tooling of your application;
-* How to test and see coverage statistics;
-* How to handle deployables;
-* How to generate deployables!
+## Instalação e primeiro acesso
+Para instalar esse repositório, faça download dos arquivos ou clone este repositório GIT e, dentro do diretório dele, execute os seguintes comandos.
 
-## How to develop
-This project is built upon `pipenv`, rather than pip.
-[](https://docs.pipenv.org/en/latest/)
+    docker-compose up -d
+    docker-compose exec jupyter-notebook pipenv install --system --dev
 
-    $ make setup
+Aponte o navegador para `http://localhost:8888` e pronto! Você terá um sistema com o jupyter notebook instalado. [](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
 
-Running tests:
+    docker-compose exec jupyter-notebook python3 app.py
 
-    $ make test
+O comando acima executa a aplicação `app.py` que, basicamente, coleta as bases de dados e as deixa disponíveis na pasta `clean_data`;
 
-## Contribute
-Just fork it, develop and then provide me an PR.
+## Executando testes
+Esse projeto foi composto de uma suíte de testes unitários. Estes servem para garantir a assertividade do projeto, assim como parâmetro de qualidade para o desenvolvimento de novas melhorias.
+Para a execução dos testes, digite o seguinte comando:
+
+    docker-compose exec jupyter-notebook pytest --cov=app
+
+## Contribua!
+Dúvidas? Está afim de contribuir? Por favor crie um issue nesse projeto!
+
+## Mantenedor
+Esse projeto está sendo inicialmente mantido por:
+
+* Jon Trigueiro <joepreludian at gmail dot com>

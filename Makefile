@@ -13,5 +13,5 @@ test: setup
 	docker-compose exec jupyter-notebook pytest --cov=app
 
 shell: setup
-	docker-compose exec jupyter-notebook bash
+	docker-compose exec -u $$(id -u):$$(id -g) jupyter-notebook bash
 
