@@ -4,17 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-jupyter = "*"
 flake8 = "*"
 
 [packages]
 requests = "*"
-rows = "*"
-sqlalchemy = "*"
 pytest = "*"
 coverage = "*"
 pytest-cov = "*"
-pandas = "*"
 
 [requires]
 python_version = "3.7"
