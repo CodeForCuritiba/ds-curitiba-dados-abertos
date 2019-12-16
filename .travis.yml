@@ -25,7 +25,7 @@ jobs:
       install:
         - docker pull code4cwb/datascience-kit
       script:
-        - docker run -it -v $(pwd):/app code4cwb/datascience-kit bash deploy.sh;
+        - docker run -it -v $(pwd):/app code4cwb/datascience-kit ./deploy.sh;
       before_deploy:
         - git config --global user.email "builds@travis-ci.com"
         - git config --global user.name "Travis CI"
