@@ -18,7 +18,7 @@ jobs:
       install:
         - docker pull code4cwb/datascience-kit
       script:
-        - docker run -it -v $(pwd):/app code4cwb/datascience-kit ./deploy.sh;
+        - docker run -it -e "CODECOV_TOKEN=1da45d3f-0a2b-4c71-a220-034a2aef8ea2"-v $(pwd):/app code4cwb/datascience-kit ./deploy.sh;
     
     - stage: CD - Deploy
       if: branch = master
