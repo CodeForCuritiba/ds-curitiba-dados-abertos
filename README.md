@@ -1,5 +1,8 @@
 # Curitiba - Dados Abertos
 ## Arquivo limpo do dadosbertos - Portal curitiba.pr.gov.br
+
+[![Build Status](https://travis-ci.org/CodeForCuritiba/ds-curitiba-dados-abertos.svg?branch=master)](https://travis-ci.org/CodeForCuritiba/ds-curitiba-dados-abertos)
+
 Esse repositório visa abranger todos os dados do portal da transparência de maneira limpa e pronta para ser utilizada por programas de BI. [](https://www.curitiba.pr.gov.br/dadosabertos/busca/)
 O mesmo gera entregáveis que podem ser acessados facilmente na aba "releases" deste mesmo repositório. Este é um projeto piloto do code for Curitiba que visa utilizar técnicas de CI/CD.
 
