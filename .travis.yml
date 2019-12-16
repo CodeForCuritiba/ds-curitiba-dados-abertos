@@ -18,20 +18,10 @@ jobs:
       script: flake8 app.py
 
     - stage: CI - Test Codebase - Quality Gate
-      before_script:
-        - curl -L  https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-        - chmod +x ./cc-test-reporter
-        - ./cc-test-reporter before-build
       install:
         - pip install pytest coverage pytest-cov flake8
       script:
         - pytest --cov=curitiba156
-      after_script:
-        - coverage xml
-        - >
-          if [[ "$TRAVIS_PULL_REQUEST" == "false" ]];
-          then ./cc-test-reporter after-build
-          --exit-code $TRAVIS_TEST_RESULT; fi
 
     - stage: CD - Deploy
       if: branch = master
