@@ -3,7 +3,7 @@ import os
 import pytest
 from pathlib import Path
 
-from app import \
+from curitiba156 import \
     get_downloaded_base156, get_latest_csv_url_from_156, download_file
 
 
