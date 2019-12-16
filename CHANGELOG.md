@@ -1,3 +1,6 @@
+#2.1.0
+- Atualizado projeto. Adicionado Pipeline de entrega contínua;
+
 #2.0.0
 - Nova versão utilizando biblioteca de datascience da code
 
