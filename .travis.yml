@@ -16,10 +16,10 @@ jobs:
 
     - stage: CI - Test Codebase - Quality Gate
       install:
-        - pip install pytest coverage pytest-cov flake8
+        - docker pull code4cwb/datascience-kit
       script:
-        - pytest --cov=curitiba156
-
+        - docker run -it -v $(pwd):/app code4cwb/datascience-kit ./deploy.sh;
+    
     - stage: CD - Deploy
       if: branch = master
       install:
