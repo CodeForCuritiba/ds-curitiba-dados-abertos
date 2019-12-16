@@ -3,9 +3,6 @@ language: python
 
 python:
   - 3.7
-env:
-  global:
-    CC_TEST_REPORTER_ID=$CODECLIMATE_REPORTER_ID
 
 branches:
   only:
