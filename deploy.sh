@@ -5,12 +5,10 @@ figlet "Deploy 156";
 mkdir _deploy;
 cp -Rv *.ipynb _deploy;
 
-pip3 install requests pytest coverage pytest-cov codecov;
+pip3 install requests pytest coverage pytest-cov;
 
 figlet 'Test Curitiba156';
 pytest --cov=curitiba156;
-
-codecov;
 
 cd _deploy; 
 
