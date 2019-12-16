@@ -2,9 +2,20 @@
 
 figlet "CODE4CWB"
 echo "Starting Curitiba Dados abertos!";
-rm requirements*.txt;
-pipenv_to_requirements;
-pip install -r requirements.txt
 
-figlet "Init Jupyter"
-jupyter notebook --port 8888 --allow-root --ip=0.0.0.0 --NotebookApp.token='' --NotebookApp.password=''
+# Instalando bibliotecas
+pip install --upgrade requests jupyterthemes
+
+figlet "Jupyter Start";
+
+# Ativando extensões extras do jupyter
+jupyter nbextension enable --py --sys-prefix qgrid;
+jupyter nbextension enable --py --sys-prefix widgetsnbextension;
+
+figlet "Jupyter Notebook";
+
+# Customizando Jupyter Notebook - https://github.com/dunovank/jupyter-themes
+jt -t chesterish -fs 95 -altp -tfs 11 -nfs 115 -cellw 94% -T
+
+# Iniciando Jupyter Notebook
+jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root --NotebookApp.token='' --NotebookApp.password='';
