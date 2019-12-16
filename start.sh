@@ -4,7 +4,7 @@ figlet "CODE4CWB"
 echo "Starting Curitiba Dados abertos!";
 
 # Instalando bibliotecas
-pip install --upgrade requests jupyterthemes
+pip install --upgrade requests jupyterthemes;
 
 figlet "Jupyter Start";
 
