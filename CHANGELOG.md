@@ -1,3 +1,6 @@
+#2.1.1
+- Bugfixes
+
 #2.1.0
 - Atualizado projeto. Adicionado Pipeline de entrega contínua;
 
