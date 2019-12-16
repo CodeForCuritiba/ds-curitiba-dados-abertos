@@ -3,7 +3,6 @@ import os
 import requests
 
 import pandas as pd
-from sqlalchemy import create_engine
 
 from xml.dom import minidom
 
@@ -105,36 +104,6 @@ def get_downloaded_base156():
 
 def main():
     csv_file, csv_encoding = get_downloaded_base156()
-
-    print('Loading data from CSV...')
-    field_names = ['SOLICITACAO', 'TIPO', 'ORGAO', 'DATA',
-                   'HORARIO', 'ASSUNTO', 'SUBDIVISAO', 'DESCRICAO',
-                   'LOGRADOURO_ASS', 'BAIRRO_ASS', 'REGIONAL_ASS',
-                   'MEIO_RESPOSTA', 'OBSERVACAO', 'SEXO', 'BAIRRO_CIDADAO',
-                   'REGIONAL_CIDADAO', 'DATA_NASC', 'TIPO_CIDADAO',
-                   'ORGAO_RESP', 'RESPOSTA_FINAL', 'RESPOSTA_FINAL_DETALHE']
-
-    data = pd.read_csv(csv_file, sep=';', encoding=csv_encoding,
-                       error_bad_lines=False, skiprows=[0, 1],
-                       names=field_names)
-
-    print('Exporting read Dataset to SQLITE...')
-    sqlite_db_engine = create_engine(
-        'sqlite:///clean_data/base156.sqlite', echo=False)
-
-    data.to_sql('base156', con=sqlite_db_engine, if_exists='replace')
-
-    data_sexo = data[['SEXO']].groupby(
-        ['SEXO']).size().reset_index(name='counts')
-
-    data_sexo.to_sql('solicitacoes_por_sexo', con=sqlite_db_engine,
-                     if_exists='replace')
-
-    data_orgao = data[['ORGAO']].groupby(
-        ['ORGAO']).size().reset_index(name='counts')
-
-    data_orgao.to_sql('solicitacoes_por_orgao', con=sqlite_db_engine,
-                      if_exists='replace')
 
 
 if __name__ == '__main__':

@@ -1,6 +1,4 @@
-
-# Created by https://www.gitignore.io/api/vim,python,jupyternotebooks
-# Edit at https://www.gitignore.io/?templates=vim,python,jupyternotebooks
+requirements*.txt
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks

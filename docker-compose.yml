@@ -1,12 +1,12 @@
 ---
-version: '3.7'
+version: "3.7"
+
 services:
-  jupyter-notebook:
-    build:
-      context: .
-    image: recrutatech_devops
-    ports:
-      - "8888:8888"
+  jupyter:
+    image: 'code4cwb/datascience-kit'
+    command: ./start.sh
     volumes:
       - .:/app
-
+    ports:
+      - 8888:8888
+    user: root

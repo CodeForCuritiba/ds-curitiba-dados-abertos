@@ -1,3 +1,6 @@
+#2.0.0
+- Nova versão utilizando biblioteca de datascience da code
+
 #1.1.3
 - Small fixes
 - Update readme file

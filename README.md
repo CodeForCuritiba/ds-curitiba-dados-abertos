@@ -11,19 +11,14 @@ O instalador para Windows pode ser encontrado em [](https://docs.docker.com/dock
 Para instalar esse repositório, faça download dos arquivos ou clone este repositório GIT e, dentro do diretório dele, execute os seguintes comandos.
 
     docker-compose up -d
-    docker-compose exec jupyter-notebook pipenv install --system --dev
 
 Aponte o navegador para `http://localhost:8888` e pronto! Você terá um sistema com o jupyter notebook instalado. [](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
-
-    docker-compose exec jupyter-notebook python3 app.py
-
-O comando acima executa a aplicação `app.py` que, basicamente, coleta as bases de dados e as deixa disponíveis na pasta `clean_data`;
 
 ## Executando testes
 Esse projeto foi composto de uma suíte de testes unitários. Estes servem para garantir a assertividade do projeto, assim como parâmetro de qualidade para o desenvolvimento de novas melhorias.
 Para a execução dos testes, digite o seguinte comando:
 
-    docker-compose exec jupyter-notebook pytest --cov=app
+    docker-compose exec jupyter pytest --cov=curitiba156
 
 ## Contribua!
 Dúvidas? Está afim de contribuir? Por favor crie um issue nesse projeto!

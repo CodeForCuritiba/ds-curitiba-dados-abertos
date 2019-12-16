@@ -19,14 +19,13 @@ jobs:
 
     - stage: CI - Test Codebase - Quality Gate
       before_script:
-        -  curl -L  https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - curl -L  https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
       install:
-        - pip install --upgrade pip pipenv
-        - pipenv install --system --deploy
+        - pip install pytest coverage pytest-cov flake8
       script:
-        - pytest --cov=app
+        - pytest --cov=curitiba156
       after_script:
         - coverage xml
         - >
@@ -34,16 +33,13 @@ jobs:
           then ./cc-test-reporter after-build
           --exit-code $TRAVIS_TEST_RESULT; fi
 
-    - stage: CD - Deploy Database
+    - stage: CD - Deploy
       if: branch = master
       install:
-        - pip install --upgrade pip pipenv
-        - pipenv install --system --deploy
+        - docker pull code4cwb/datascience-kit
       script:
-        - python app.py
-        - gzip --verbose clean_data/base156.sqlite
+        - docker run -it -v $(pwd):/app code4cwb/datascience-kit bash deploy.sh;
       before_deploy:
-        - pipenv lock -r --dev > requirements.txt
         - git config --global user.email "builds@travis-ci.com"
         - git config --global user.name "Travis CI"
         - export GIT_TAG=$(cat VERSION)-$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
