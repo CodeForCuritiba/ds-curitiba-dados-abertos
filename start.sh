@@ -4,7 +4,7 @@ figlet "CODE4CWB"
 echo "Starting Curitiba Dados abertos!";
 
 # Instalando bibliotecas
-pip install --upgrade requests pandarallel jupyterthemes;
+pip install --upgrade requests pandarallel jupyterthemes git+ssh://git@github.com/kavgan/word_cloud.git;
 
 figlet "Jupyter Start";
 
