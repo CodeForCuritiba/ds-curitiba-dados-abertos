@@ -4,7 +4,7 @@ version: "3.7"
 services:
   jupyter:
     image: 'code4cwb/datascience-kit'
-    command: ./start.sh
+    command: bash start.sh
     volumes:
       - .:/app
     ports:
