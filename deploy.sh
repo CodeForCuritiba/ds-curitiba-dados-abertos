@@ -7,9 +7,6 @@ cp -Rv *.ipynb _deploy;
 
 pip3 install requests pytest coverage pytest-cov;
 
-figlet 'Test Curitiba156';
-pytest --cov=curitiba156;
-
 cd _deploy; 
 
 jupyter nbconvert --to script *.ipynb;
