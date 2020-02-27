@@ -1,3 +1,6 @@
+#3.0.0
+- Modificado a plataforma para trabalhar com o pacote python curitiba-dados-abertos
+
 #2.1.1
 - Bugfixes
 
