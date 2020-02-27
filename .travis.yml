@@ -10,10 +10,6 @@ branches:
 
 jobs:
   include:
-    - stage: Base linting
-      install: pip install flake8
-      script: flake8 app.py
-
     - stage: CI - Test Codebase - Quality Gate
       install:
         - docker pull code4cwb/datascience-kit
