@@ -16,13 +16,6 @@ Para instalar esse repositório, faça download dos arquivos ou clone este repos
     docker-compose up -d
 
 Aponte o navegador para `http://localhost:8888` e pronto! Você terá um sistema com o jupyter notebook instalado. [](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html)
-
-## Executando testes
-Esse projeto foi composto de uma suíte de testes unitários. Estes servem para garantir a assertividade do projeto, assim como parâmetro de qualidade para o desenvolvimento de novas melhorias.
-Para a execução dos testes, digite o seguinte comando:
-
-    docker-compose exec jupyter pytest --cov=curitiba156
-
 ## Contribua!
 Dúvidas? Está afim de contribuir? Por favor crie um issue nesse projeto!
 
