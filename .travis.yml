@@ -24,10 +24,8 @@ jobs:
       if: branch = master
       install:
         - docker pull code4cwb/datascience-kit
-        - pip install codecov
       script:
         - docker run -it -v $(pwd):/app code4cwb/datascience-kit ./deploy.sh;
-        - codecov
       before_deploy:
         - git config --global user.email "builds@travis-ci.com"
         - git config --global user.name "Travis CI"
