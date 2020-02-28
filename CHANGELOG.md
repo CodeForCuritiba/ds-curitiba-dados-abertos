@@ -1,3 +1,9 @@
+#3.1.0
+- Adicionado mais módulos na interface; 
+- Criado arquivo de exemplo para execução do projeto;
+- Ativado algumas bibliotecas do nbextension;
+- Bugfixes; melhorado utilização do Qgrid
+
 #3.0.0
 - Modificado a plataforma para trabalhar com o pacote python curitiba-dados-abertos
 
