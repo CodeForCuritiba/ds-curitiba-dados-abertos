@@ -160,3 +160,4 @@ tags
 
 clean_data/*
 source_data/*
+*.csv
