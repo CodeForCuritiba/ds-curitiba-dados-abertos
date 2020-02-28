@@ -6,13 +6,22 @@ echo "Iniciando painel dados abertos";
 # Instalando bibliotecas
 figlet "Pacotes Python..."
 pip install --upgrade pip;
-pip install --upgrade requests pandarallel jupyterthemes curitiba-dados-abertos;
+pip install notebook jupyter_contrib_nbextensions requests pandarallel jupyterthemes curitiba-dados-abertos;
+pip install jupyter_nbextensions_configurator;
 
 figlet "Pacotes Jupyter...";
 
 # Ativando extensões extras do jupyter
+jupyter contrib nbextension install --sys-prefix;
+jupyter nbextensions_configurator enable --sys-prefix
 jupyter nbextension enable --py --sys-prefix qgrid;
 jupyter nbextension enable --py --sys-prefix widgetsnbextension;
+jupyter nbextension enable --sys-prefix hinterland/hinterland;
+jupyter nbextension enable --sys-prefix scroll_down;
+jupyter nbextension enable --sys-prefix gist_it/main;
+jupyter nbextension enable --sys-prefix execute_time/ExecuteTime;
+jupyter nbextension enable --sys-prefix "tree-filter/index";
+
 
 figlet "Iniciando Jupyter";
 echo "Carregando serviço na porta 8888"
